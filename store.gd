@@ -12,7 +12,12 @@ func _ready():
 	$Player/Camera2D.limit_bottom = used_rect.y*16 
 	$Player/Camera2D.limit_right = used_rect.x*16 
 	$SenileTimer.start() 
+	$Music.connect("finished", Callable(self,"_on_loop_sound").bind($MUsic))
 	$Music.play() 
+	
+
+func _on_loop_sound(player):
+	player.stream_paused = false
 	
 func _on_senile_timer_timeout(): 
 	var senile = senile_scene.instantiate() 
