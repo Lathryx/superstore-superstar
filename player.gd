@@ -11,6 +11,7 @@ func _ready():
 	
 func _physics_process(delta: float) -> void: 
 	var direction = Vector2.ZERO 
+	var strumming = Input.is_action_just_pressed("strum") 
 	
 	if Input.is_action_pressed("move_left"): 
 		direction.x -= 1 
