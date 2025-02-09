@@ -8,9 +8,10 @@ var acceleration = 7
 @onready var navigation_agent: NavigationAgent2D = $Navigation/NavigationAgent2D 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#var mob_types = $AnimatedSprite2D.sprite_frames.get_animation_names() 
-	#$AnimatedSprite2D.play(mob_types[randi() % mob_types.size()])  
-	speed = randi() % 71 + 30
+	var num_types = 2 
+	var path = "res://senile%d.tres" % (randi() % num_types + 1) 
+	$AnimatedSprite2D.sprite_frames = load(path) 
+	speed = randi_range(60, 80) 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -35,4 +36,3 @@ func _physics_process(delta: float) -> void:
 	
 func _on_nav_timer_timeout() -> void:
 	navigation_agent.target_position = target.global_position 
-	print("nav timer")
