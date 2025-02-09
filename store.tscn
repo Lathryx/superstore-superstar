@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=4 uid="uid://crkcq0i1vnq87"]
+[gd_scene load_steps=5 format=4 uid="uid://crkcq0i1vnq87"]
 
 [ext_resource type="TileSet" uid="uid://b0ydg6jsw5gcv" path="res://tileset.tres" id="1_2uqbl"]
 [ext_resource type="Script" path="res://store.gd" id="1_yh0f2"]
 [ext_resource type="PackedScene" uid="uid://dojo6tehxb8su" path="res://player.tscn" id="2_i43s7"]
+
+[sub_resource type="Curve2D" id="Curve2D_xb15j"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 768, 304, 0, 0, 0, 0, 768, 432, 0, 0, 0, 0, 624, 432)
+}
+point_count = 3
 
 [node name="Store" type="Node2D"]
 y_sort_enabled = true
@@ -31,5 +37,12 @@ tile_set = ExtResource("1_2uqbl")
 
 [node name="Player" parent="." instance=ExtResource("2_i43s7")]
 y_sort_enabled = true
-position = Vector2(145, 113)
+position = Vector2(178, 106)
 collision_mask = 14
+
+[node name="SenilePath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_xb15j")
+
+[node name="SenilePathFollow" type="PathFollow2D" parent="SenilePath"]
+position = Vector2(768, 304)
+rotation = 1.5708

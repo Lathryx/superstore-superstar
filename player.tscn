@@ -78,8 +78,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7eoot"]
-size = Vector2(23, 31)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8q0m8"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 10
@@ -96,10 +95,10 @@ animation = &"idle"
 offset = Vector2(1, -13)
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_7eoot")
+position = Vector2(-1, -13)
+shape = SubResource("CapsuleShape2D_8q0m8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
