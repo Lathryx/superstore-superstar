@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://crkcq0i1vnq87"]
+[gd_scene load_steps=7 format=4 uid="uid://crkcq0i1vnq87"]
 
 [ext_resource type="TileSet" uid="uid://b0ydg6jsw5gcv" path="res://tileset.tres" id="1_2uqbl"]
 [ext_resource type="Script" path="res://store.gd" id="1_yh0f2"]
@@ -10,6 +10,11 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 768, 304, 0, 0, 0, 0, 768, 432, 0, 0, 0, 0, 624, 432)
 }
 point_count = 3
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jlb0o"]
+vertices = PackedVector2Array(782, -6.1875, 782, 453.898, -21.8281, 446.094, -14.1562, -21.7969)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(792, -16, 792, 464, -32, 456, -24, -32)])
 
 [node name="Store" type="Node2D"]
 y_sort_enabled = true
@@ -50,5 +55,13 @@ position = Vector2(768, 304)
 rotation = 1.5708
 
 [node name="SenileTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_jlb0o")
+
+[node name="Senile" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_wg20b")]
+position = Vector2(216, 64)
+target = NodePath("../Player")
 
 [connection signal="timeout" from="SenileTimer" to="." method="_on_senile_timer_timeout"]

@@ -15,6 +15,7 @@ func _ready():
 	
 func _on_senile_timer_timeout(): 
 	var senile = senile_scene.instantiate() 
+	senile.set_deferred("target", $Player) 
 	
 	var senile_spawn_location = $SenilePath/SenileSpawnLocation 
 	senile_spawn_location.progress_ratio = randf() 
