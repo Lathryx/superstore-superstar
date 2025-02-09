@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnlvdmlr4nbdf"]
+
+[ext_resource type="Script" path="res://title_screen.gd" id="1_volur"]
+[ext_resource type="Texture2D" uid="uid://dss7nxr5u0lrd" path="res://Main Title-Sheet.png" id="2_4mpkc"]
+[ext_resource type="Script" path="res://TitleAnimated.gd" id="3_8wef5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2djo"]
+atlas = ExtResource("2_4mpkc")
+region = Rect2(0, 0, 512, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_130y2"]
+atlas = ExtResource("2_4mpkc")
+region = Rect2(512, 0, 512, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ft6m"]
+atlas = ExtResource("2_4mpkc")
+region = Rect2(1024, 0, 512, 288)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojj6h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2djo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_130y2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ft6m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_volur")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 1184.0
+offset_right = 1262.0
+offset_bottom = 1301.0
+scale = Vector2(3.12978, 2.42269)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(1472, 848)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_ojj6h")
+frame_progress = 0.00422079
+script = ExtResource("3_8wef5")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
