@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 var speed: int 
 var acceleration = 7 
+var health = 8 
 
 @onready var navigation_agent: NavigationAgent2D = $Navigation/NavigationAgent2D 
 # Called when the node enters the scene tree for the first time.

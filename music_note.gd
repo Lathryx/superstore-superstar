@@ -2,8 +2,6 @@ extends Node2D
 
 var direction: Vector2 
 var speed = 80 
-var health = 8 
-
 
 func _ready() -> void:
 	var num_types = 3 
