@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://crkcq0i1vnq87"]
+[gd_scene load_steps=6 format=4 uid="uid://crkcq0i1vnq87"]
 
 [ext_resource type="TileSet" uid="uid://b0ydg6jsw5gcv" path="res://tileset.tres" id="1_2uqbl"]
 [ext_resource type="Script" path="res://store.gd" id="1_yh0f2"]
 [ext_resource type="PackedScene" uid="uid://dojo6tehxb8su" path="res://player.tscn" id="2_i43s7"]
+[ext_resource type="PackedScene" uid="uid://cxnylq7m7efai" path="res://senile.tscn" id="2_wg20b"]
 
 [sub_resource type="Curve2D" id="Curve2D_xb15j"]
 _data = {
@@ -13,6 +14,7 @@ point_count = 3
 [node name="Store" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_yh0f2")
+senile_scene = ExtResource("2_wg20b")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -512.0
@@ -43,6 +45,10 @@ collision_mask = 14
 [node name="SenilePath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_xb15j")
 
-[node name="SenilePathFollow" type="PathFollow2D" parent="SenilePath"]
+[node name="SenileSpawnLocation" type="PathFollow2D" parent="SenilePath"]
 position = Vector2(768, 304)
 rotation = 1.5708
+
+[node name="SenileTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="SenileTimer" to="." method="_on_senile_timer_timeout"]

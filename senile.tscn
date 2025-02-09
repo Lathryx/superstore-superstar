@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxnylq7m7efai"]
+[gd_scene load_steps=5 format=3 uid="uid://cxnylq7m7efai"]
 
 [ext_resource type="SpriteFrames" uid="uid://btk7vbnubhwfm" path="res://senile1.tres" id="1_6jti0"]
+[ext_resource type="Script" path="res://senile.gd" id="1_desmt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4hes"]
 size = Vector2(18, 2)
@@ -8,6 +9,7 @@ size = Vector2(18, 2)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhsd6"]
 
 [node name="Senile" type="CharacterBody2D"]
+script = ExtResource("1_desmt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
