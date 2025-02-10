@@ -91,7 +91,7 @@ shape = SubResource("RectangleShape2D_t50iu")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_04pk0")
-animation = &"idle"
+animation = &"idle_attack"
 offset = Vector2(1, -13)
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -108,3 +108,9 @@ process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 rotation_smoothing_speed = 1.0
+
+[node name="StrumTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="StrumTimer" to="." method="_on_strum_timer_timeout"]
