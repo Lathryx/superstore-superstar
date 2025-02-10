@@ -10,7 +10,7 @@ var health = 8
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var num_types = 2 
-	var path = "res://senile%d.tres" % (randi() % num_types + 1) 
+	var path = "res://Resources/senile%d.tres" % (randi() % num_types + 1) 
 	$AnimatedSprite2D.sprite_frames = load(path) 
 	speed = randi_range(60, 80) 
 
