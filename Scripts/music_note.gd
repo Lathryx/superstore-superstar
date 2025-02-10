@@ -7,6 +7,7 @@ func _ready() -> void:
 	var num_types = 3 
 	var path = "res://Resources/musicnote%d.tres" % (randi() % num_types + 1)
 	$AnimatedSprite2D.sprite_frames = load(path) 
+	$AnimatedSprite2D.play("default")
 	#print("hello")
 	#print($AnimatedSprite2D.sprite_frames) 
 
