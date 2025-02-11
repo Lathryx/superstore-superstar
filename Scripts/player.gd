@@ -42,6 +42,10 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_pressed("strum"): 
 		if not $StrumTimer.is_stopped(): return 
-		var dir = get_global_mouse_position() - position 
-		strum.emit(position, dir) 
+		var pos = position-Vector2(0,$Area2D/CollisionShape2D.shape.height/2)
+		var dir = get_global_mouse_position() - pos 
+		var offset_scalar = 10 
+		dir = dir.normalized() 
+		pos += dir*offset_scalar 
+		strum.emit(pos, dir) 
 		$StrumTimer.start() 

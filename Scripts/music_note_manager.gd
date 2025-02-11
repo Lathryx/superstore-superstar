@@ -4,8 +4,8 @@ extends Node2D
 
 func _on_player_strum(pos, dir) -> void:
 	var music_note = music_note_scene.instantiate() 
-	print(dir.normalized(), dir) 
+	#print(dir.normalized(), dir) 
 	add_child(music_note) 
 	music_note.position = pos 
-	music_note.direction = dir.normalized() 
+	music_note.direction = dir 
 	music_note.add_to_group("music_notes") 
