@@ -40,8 +40,6 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide() 
 	
-	position = position.clamp(Vector2.ZERO, get_node("../FloorLayer").get_used_rect().size*16)  
-	
 	if Input.is_action_just_pressed("strum"): 
 		var dir = get_global_mouse_position() - position 
 		strum.emit(position, dir) 
