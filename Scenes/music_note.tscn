@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvn72h2pr3tpj"]
+[gd_scene load_steps=4 format=3 uid="uid://cvn72h2pr3tpj"]
 
 [ext_resource type="Script" path="res://Scripts/music_note.gd" id="1_16y26"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x5cb2"]
+bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_of2ev"]
 radius = 8.0
 
 [node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 6
+physics_material_override = SubResource("PhysicsMaterial_x5cb2")
+gravity_scale = 0.0
 script = ExtResource("1_16y26")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

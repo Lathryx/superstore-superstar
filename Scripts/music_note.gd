@@ -15,7 +15,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	look_at(get_global_mouse_position()) 
 	#position += direction * speed * delta 
-	move_and_collide(direction) 
+	move_and_collide(direction*speed*delta) 
 
 func _process(delta): 
 	pass
