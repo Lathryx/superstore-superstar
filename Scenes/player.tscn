@@ -26,13 +26,13 @@ region = Rect2(96, 0, 24, 30)
 atlas = ExtResource("1_36y1h")
 region = Rect2(72, 0, 24, 30)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g1hqq"]
-atlas = ExtResource("1_36y1h")
-region = Rect2(144, 0, 24, 30)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_y6coy"]
 atlas = ExtResource("1_36y1h")
 region = Rect2(120, 0, 24, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1hqq"]
+atlas = ExtResource("1_36y1h")
+region = Rect2(144, 0, 24, 30)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_04pk0"]
 animations = [{
@@ -68,10 +68,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g1hqq")
+"texture": SubResource("AtlasTexture_y6coy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y6coy")
+"texture": SubResource("AtlasTexture_g1hqq")
 }],
 "loop": true,
 "name": &"walk_attack",
@@ -82,6 +82,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 10
+motion_mode = 1
 script = ExtResource("1_ecrfe")
 metadata/_edit_group_ = true
 
@@ -91,7 +92,7 @@ shape = SubResource("RectangleShape2D_t50iu")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_04pk0")
-animation = &"idle_attack"
+animation = &"walk_attack"
 offset = Vector2(1, -13)
 
 [node name="Area2D" type="Area2D" parent="."]

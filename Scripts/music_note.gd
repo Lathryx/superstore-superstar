@@ -1,4 +1,4 @@
-extends Node2D
+extends RigidBody2D 
 
 var direction: Vector2 
 var speed = 80 
@@ -14,8 +14,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	look_at(get_global_mouse_position()) 
-	position += direction * speed * delta 
-	
+	#position += direction * speed * delta 
+	move_and_collide(direction) 
 
 func _process(delta): 
 	pass

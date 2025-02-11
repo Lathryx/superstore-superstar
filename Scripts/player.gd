@@ -31,17 +31,17 @@ func _physics_process(delta: float) -> void:
 			velocity -= friction * velocity.normalized() * delta 
 		else: 
 			velocity = Vector2.ZERO 
-		$AnimatedSprite2D.animation = "idle_attack" if strumming else "idle"
+		$AnimatedSprite2D.animation = "idle_attack" if strumming or not $StrumTimer.is_stopped() else "idle"
 	
 	else: 
 		velocity += accel * direction * delta 
 		velocity = velocity.limit_length(max_speed) 
-		$AnimatedSprite2D.animation = "walk_attack" if strumming else "walk"
+		$AnimatedSprite2D.animation = "walk_attack" if strumming or not $StrumTimer.is_stopped() else "walk"
 		
 	move_and_slide() 
 	
-	position = position.clamp(Vector2.ZERO, get_node("../FloorLayer").get_used_rect().size*16)  
-	
+	position = position.clamp(Vector2.ZERO, $"../FloorLayer".get_used_rect().size*16)  
+
 	if Input.is_action_pressed("strum"): 
 		if not $StrumTimer.is_stopped(): return 
 		var dir = get_global_mouse_position() - position 
