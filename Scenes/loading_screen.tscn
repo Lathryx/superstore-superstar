@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp5qp21fxia0i"]
+
+[ext_resource type="Script" path="res://Scripts/loading_screen.gd" id="1_hksw6"]
+
+[node name="LoadingScreen" type="CanvasLayer"]
+script = ExtResource("1_hksw6")
+
+[node name="LoadingBackground" type="ColorRect" parent="."]
+offset_right = 768.0
+offset_bottom = 432.0
+color = Color(0, 0, 0, 0.552941)
+
+[node name="LoadingLabel" type="Label" parent="LoadingBackground"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 200.0
+offset_right = 424.0
+offset_bottom = 223.0
+text = "Loading..."
+horizontal_alignment = 1
+vertical_alignment = 1
