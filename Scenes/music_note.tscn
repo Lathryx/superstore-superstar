@@ -1,14 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvn72h2pr3tpj"]
-
-[ext_resource type="Script" path="res://Scripts/music_note.gd" id="1_khuy4"]
+[gd_scene load_steps=2 format=3 uid="uid://cvn72h2pr3tpj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_of2ev"]
 radius = 8.0
 
-[node name="MusicNote" type="Area2D"]
-collision_layer = 16
-collision_mask = 6
-script = ExtResource("1_khuy4")
+[node name="RigidBody2D" type="RigidBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_of2ev")

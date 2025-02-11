@@ -7,11 +7,11 @@ const accel = 3000
 const friction = 1500 
 
 func _ready(): 
-	pass 
+	$AnimatedSprite2D.play() 
 	
 func _physics_process(delta: float) -> void: 
 	var direction = Vector2.ZERO 
-	var strumming = Input.is_action_just_pressed("strum") 
+	var strumming = Input.is_action_pressed("strum") 
 	
 	if Input.is_action_pressed("move_left"): 
 		direction.x -= 1 
@@ -31,15 +31,23 @@ func _physics_process(delta: float) -> void:
 			velocity -= friction * velocity.normalized() * delta 
 		else: 
 			velocity = Vector2.ZERO 
-		$AnimatedSprite2D.animation = "idle" 
+		$AnimatedSprite2D.animation = "idle_attack" if strumming or not $StrumTimer.is_stopped() else "idle"
+	
 	else: 
 		velocity += accel * direction * delta 
 		velocity = velocity.limit_length(max_speed) 
-		$AnimatedSprite2D.animation = "walk" 
-		$AnimatedSprite2D.play() 
+		$AnimatedSprite2D.animation = "walk_attack" if strumming or not $StrumTimer.is_stopped() else "walk"
 		
 	move_and_slide() 
 	
+<<<<<<< HEAD
 	if Input.is_action_just_pressed("strum"): 
+=======
+	position = position.clamp(Vector2.ZERO, $"../FloorLayer".get_used_rect().size*16)  
+
+	if Input.is_action_pressed("strum"): 
+		if not $StrumTimer.is_stopped(): return 
+>>>>>>> 9627105ee415ebd43927a036390e554b0d2ce79e
 		var dir = get_global_mouse_position() - position 
 		strum.emit(position, dir) 
+		$StrumTimer.start() 
