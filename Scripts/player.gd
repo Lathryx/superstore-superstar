@@ -39,15 +39,9 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.animation = "walk_attack" if strumming or not $StrumTimer.is_stopped() else "walk"
 		
 	move_and_slide() 
-	
-<<<<<<< HEAD
-	if Input.is_action_just_pressed("strum"): 
-=======
-	position = position.clamp(Vector2.ZERO, $"../FloorLayer".get_used_rect().size*16)  
 
 	if Input.is_action_pressed("strum"): 
 		if not $StrumTimer.is_stopped(): return 
->>>>>>> 9627105ee415ebd43927a036390e554b0d2ce79e
 		var dir = get_global_mouse_position() - position 
 		strum.emit(position, dir) 
 		$StrumTimer.start() 
