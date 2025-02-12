@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ci8wjcfh5rm3s"]
+[gd_scene load_steps=12 format=3 uid="uid://ci8wjcfh5rm3s"]
 
 [ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_55h1n"]
 [ext_resource type="Texture2D" uid="uid://cabr10djjsbtq" path="res://Sprite Sheets/Resume Button.png" id="2_2xvq0"]
+[ext_resource type="Texture2D" uid="uid://b5pu8i0lq1dhr" path="res://Sprite Sheets/Quit Button.png" id="3_ijnev"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_reoaw"]
 atlas = ExtResource("2_2xvq0")
@@ -29,7 +30,36 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 3.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_era7f"]
+atlas = ExtResource("3_ijnev")
+region = Rect2(0, 0, 146, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_piw3x"]
+atlas = ExtResource("3_ijnev")
+region = Rect2(146, 0, 146, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u1iu"]
+atlas = ExtResource("3_ijnev")
+region = Rect2(292, 0, 146, 54)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_huiw3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_era7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_piw3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u1iu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
 }]
 
 [node name="PauseMenu" type="CanvasLayer"]
@@ -71,15 +101,21 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Quit" type="Button" parent="PauseBackground/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
-text = "QUIITTTT!!!!"
 
 [node name="ResumeAnimatedSprite2D" type="AnimatedSprite2D" parent="PauseBackground/VBoxContainer"]
 process_mode = 3
 position = Vector2(516, 132)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_1tne3")
+
+[node name="QuitAnimatedSprite2D" type="AnimatedSprite2D" parent="PauseBackground/VBoxContainer"]
+position = Vector2(496, 468)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_huiw3")
 
 [connection signal="pressed" from="PauseBackground/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseBackground/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var pause_background = $PauseBackground
 @onready var buttons = $PauseBackground/VBoxContainer
 @onready var resumeSprite = $PauseBackground/VBoxContainer/ResumeAnimatedSprite2D
+@onready var quitSprite = $PauseBackground/VBoxContainer/QuitAnimatedSprite2D
 var paused = false
 @onready var pause_menu = $PauseMenu 
 
@@ -13,6 +14,7 @@ func _ready() -> void:
 	#buttons.size.x = get_viewport().size.x/5
 	#buttons.size.y = get_viewport().size.y/5
 	resumeSprite.play()
+	quitSprite.play()
 	#print(get_viewport().size/5, buttons.size/2)
 	
 func _process(delta: float) -> void:
