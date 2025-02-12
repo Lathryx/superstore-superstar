@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvn72h2pr3tpj"]
+[gd_scene load_steps=7 format=3 uid="uid://cvn72h2pr3tpj"]
 
 [ext_resource type="Script" path="res://Scripts/music_note.gd" id="1_16y26"]
+[ext_resource type="Script" path="res://Scripts/hitbox.gd" id="2_7evlr"]
+[ext_resource type="Script" path="res://Scripts/hurtbox.gd" id="3_el8nj"]
+[ext_resource type="Script" path="res://Scripts/health.gd" id="4_m88lh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x5cb2"]
 bounce = 1.0
@@ -10,7 +13,7 @@ radius = 8.0
 
 [node name="RigidBody2D" type="RigidBody2D"]
 collision_layer = 16
-collision_mask = 6
+collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_x5cb2")
 gravity_scale = 0.0
 script = ExtResource("1_16y26")
@@ -19,3 +22,26 @@ script = ExtResource("1_16y26")
 shape = SubResource("CircleShape2D_of2ev")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("2_7evlr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_of2ev")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_el8nj")
+health = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_of2ev")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("4_m88lh")
+max_health = 1
+
+[connection signal="depleted" from="Health" to="." method="_on_health_depleted"]

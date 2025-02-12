@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dojo6tehxb8su"]
+[gd_scene load_steps=16 format=3 uid="uid://dojo6tehxb8su"]
 
 [ext_resource type="Texture2D" uid="uid://d1hdm0qp5aer" path="res://Sprite Sheets/Player Frames.png" id="1_36y1h"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ecrfe"]
 [ext_resource type="PackedScene" uid="uid://ci8wjcfh5rm3s" path="res://Scenes/pause_menu.tscn" id="3_co3mb"]
+[ext_resource type="Script" path="res://Scripts/health.gd" id="4_hy08y"]
+[ext_resource type="Script" path="res://Scripts/hurtbox.gd" id="5_rgxg2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t50iu"]
 size = Vector2(22, 4)
@@ -97,12 +99,6 @@ sprite_frames = SubResource("SpriteFrames_04pk0")
 animation = &"walk_attack"
 offset = Vector2(1, -13)
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1, -13)
-shape = SubResource("CapsuleShape2D_8q0m8")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 position = Vector2(0, -5)
@@ -118,5 +114,18 @@ follow_viewport_enabled = false
 [node name="StrumTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("4_hy08y")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("5_rgxg2")
+health = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1, -13)
+shape = SubResource("CapsuleShape2D_8q0m8")
 
 [connection signal="timeout" from="StrumTimer" to="." method="_on_strum_timer_timeout"]

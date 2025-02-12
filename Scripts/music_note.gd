@@ -17,5 +17,5 @@ func _physics_process(delta: float) -> void:
 	#position += direction * speed * delta 
 	move_and_collide(direction*speed*delta) 
 
-func _process(delta): 
-	pass
+func _on_health_depleted(): 
+	queue_free() 

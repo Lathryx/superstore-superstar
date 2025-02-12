@@ -4,13 +4,13 @@ extends CharacterBody2D
 
 var speed: int 
 var acceleration = 7 
-var health = 8 
 
 @onready var navigation_agent: NavigationAgent2D = $Navigation/NavigationAgent2D 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var num_types = 2 
 	var path = "res://Resources/senile%d.tres" % (randi() % num_types + 1) 
+	#print(path) 
 	$AnimatedSprite2D.sprite_frames = load(path) 
 	speed = randi_range(60, 80) 
 
@@ -37,3 +37,6 @@ func _physics_process(delta: float) -> void:
 	
 func _on_nav_timer_timeout() -> void:
 	navigation_agent.target_position = target.global_position 
+
+func _on_health_depleted(): 
+	queue_free() 
