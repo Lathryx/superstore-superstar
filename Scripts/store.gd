@@ -2,14 +2,14 @@ extends Node2D
 
 @export var senile_scene: PackedScene 
 
-@onready var pause_menu = $PauseMenu 
-
-var used_rect 
+@onready var pause_menu = $NavigationRegion2D/Player/Camera2D/PauseMenu 
 var paused = false
+var used_rect 
+
 
 func _ready():
 	used_rect = $NavigationRegion2D/FloorLayer.get_used_rect().size 
-	
+	pause_menu.hide()
 	$NavigationRegion2D/Player/Camera2D.limit_top = 0 
 	$NavigationRegion2D/Player/Camera2D.limit_left = 0 
 	$NavigationRegion2D/Player/Camera2D.limit_bottom = used_rect.y*16 
@@ -17,12 +17,8 @@ func _ready():
 	$SenileTimer.start() 
 	$Music.connect("finished", Callable(self,"_on_loop_sound").bind($Music)) 
 	$Music.play() 
-	pause_menu.hide()
+
 	
-func _process(delta: float) -> void:
-	
-	if Input.is_action_just_pressed("pause"):
-		pauseMenu()
 		
 func _physics_process(delta: float) -> void:
 	$NavigationRegion2D/Player.position.x = clamp($NavigationRegion2D/Player.position.x, 0.0, $NavigationRegion2D/FloorLayer.get_used_rect().size.x*16)
@@ -32,13 +28,11 @@ func pauseMenu():
 	paused = !paused
 	if paused:
 		pause_menu.show()
-		Engine.time_scale = 0.0
+		get_tree().paused = true
 	else:
 		pause_menu.hide()
-		Engine.time_scale = 1.0
+		get_tree().paused = false
 	
-	
-
 func _on_loop_sound(player):
 	player.play() 
 	

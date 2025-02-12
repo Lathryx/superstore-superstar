@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dojo6tehxb8su"]
+[gd_scene load_steps=14 format=3 uid="uid://dojo6tehxb8su"]
 
 [ext_resource type="Texture2D" uid="uid://d1hdm0qp5aer" path="res://Sprite Sheets/Player Frames.png" id="1_36y1h"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ecrfe"]
+[ext_resource type="PackedScene" uid="uid://ci8wjcfh5rm3s" path="res://Scenes/pause_menu.tscn" id="3_co3mb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t50iu"]
 size = Vector2(22, 4)
@@ -81,6 +82,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8q0m8"]
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(1, 0)
 collision_mask = 10
 motion_mode = 1
 script = ExtResource("1_ecrfe")
@@ -109,6 +111,9 @@ process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 rotation_smoothing_speed = 1.0
+
+[node name="PauseMenu" parent="Camera2D" instance=ExtResource("3_co3mb")]
+follow_viewport_enabled = false
 
 [node name="StrumTimer" type="Timer" parent="."]
 wait_time = 0.2

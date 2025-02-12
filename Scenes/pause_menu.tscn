@@ -1,14 +1,52 @@
-[gd_scene load_steps=2 format=3 uid="uid://ci8wjcfh5rm3s"]
+[gd_scene load_steps=7 format=3 uid="uid://ci8wjcfh5rm3s"]
 
 [ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_55h1n"]
+[ext_resource type="Texture2D" uid="uid://cabr10djjsbtq" path="res://Sprite Sheets/Resume Button.png" id="2_2xvq0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reoaw"]
+atlas = ExtResource("2_2xvq0")
+region = Rect2(0, 0, 182, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yo0qq"]
+atlas = ExtResource("2_2xvq0")
+region = Rect2(182, 0, 182, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bo3e"]
+atlas = ExtResource("2_2xvq0")
+region = Rect2(364, 0, 182, 76)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1tne3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reoaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yo0qq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bo3e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+follow_viewport_enabled = true
+follow_viewport_scale = 2.0
 script = ExtResource("1_55h1n")
 
 [node name="PauseBackground" type="ColorRect" parent="."]
-offset_right = 768.0
-offset_bottom = 432.0
-color = Color(0, 0, 0, 0.552941)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.470588)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseBackground"]
 layout_mode = 1
@@ -17,24 +55,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -88.0
-offset_right = 128.0
-offset_bottom = 104.0
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 75
+theme_override_constants/separation = 100
 alignment = 1
 
 [node name="Resume" type="Button" parent="PauseBackground/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
-text = "RESUME!!!"
 
 [node name="Quit" type="Button" parent="PauseBackground/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "QUIITTTT!!!!"
+
+[node name="ResumeAnimatedSprite2D" type="AnimatedSprite2D" parent="PauseBackground/VBoxContainer"]
+process_mode = 3
+position = Vector2(516, 132)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_1tne3")
 
 [connection signal="pressed" from="PauseBackground/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseBackground/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
