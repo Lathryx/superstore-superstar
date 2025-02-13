@@ -18,4 +18,7 @@ func _physics_process(delta: float) -> void:
 	move_and_collide(direction*speed*delta) 
 
 func _on_health_depleted(): 
+	set_physics_process(false) 
+	$AnimatedSprite2D.animation = "vanish" 
+	await get_tree().create_timer(0.5).timeout 
 	queue_free() 

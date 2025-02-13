@@ -20,10 +20,7 @@ func _physics_process(delta: float) -> void:
 	
 	direction = navigation_agent.get_next_path_position() - global_position 
 	direction = direction.normalized() 
-	if direction.x > 0: 
-		$AnimatedSprite2D.flip_h = true 
-	if direction.x < 0: 
-		$AnimatedSprite2D.flip_h = false  
+	$AnimatedSprite2D.flip_h = true if direction.x > 0 else false 
 		
 	if direction == Vector2.ZERO: 
 		$AnimatedSprite2D.animation = "idle" 
@@ -37,6 +34,9 @@ func _physics_process(delta: float) -> void:
 	
 func _on_nav_timer_timeout() -> void:
 	navigation_agent.target_position = target.global_position 
+
+func _on_hurthox_received_damage(value): 
+	pass 
 
 func _on_health_depleted(): 
 	queue_free() 
