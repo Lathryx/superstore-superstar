@@ -1,9 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxnylq7m7efai"]
+[gd_scene load_steps=10 format=3 uid="uid://cxnylq7m7efai"]
 
 [ext_resource type="Script" path="res://Scripts/senile.gd" id="1_desmt"]
+[ext_resource type="Texture2D" uid="uid://c2ca8jv15gqpb" path="res://icon.svg" id="2_be6pm"]
 [ext_resource type="Script" path="res://Scripts/health.gd" id="2_tj0wr"]
 [ext_resource type="Script" path="res://Scripts/hurtbox.gd" id="3_mbki5"]
 [ext_resource type="Script" path="res://Scripts/hitbox.gd" id="4_xg2sm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i81kj"]
+atlas = ExtResource("2_be6pm")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0373f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i81kj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4hes"]
 size = Vector2(18, 2)
@@ -18,7 +34,7 @@ script = ExtResource("1_desmt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
-animation = &""
+sprite_frames = SubResource("SpriteFrames_0373f")
 offset = Vector2(0, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

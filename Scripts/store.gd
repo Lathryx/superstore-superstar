@@ -20,7 +20,7 @@ func _ready():
 
 	
 		
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	$NavigationRegion2D/Player.position.x = clamp($NavigationRegion2D/Player.position.x, 0.0, $NavigationRegion2D/FloorLayer.get_used_rect().size.x*16)
 	$NavigationRegion2D/Player.position.y = clamp($NavigationRegion2D/Player.position.y, 0.0, $NavigationRegion2D/FloorLayer.get_used_rect().size.y*16)
 	

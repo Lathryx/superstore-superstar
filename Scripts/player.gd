@@ -40,12 +40,14 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide() 
 
-	if Input.is_action_pressed("strum"): 
-		if not $StrumTimer.is_stopped(): return 
+	if strumming: 
 		var pos = position-Vector2(0, $HurtBox/CollisionShape2D.shape.height/2)
 		var dir = get_global_mouse_position() - pos 
-		var offset_scalar = 10 
 		dir = dir.normalized() 
+		$AnimatedSprite2D.flip_h = true if dir.x > 0 else false 
+		
+		if not $StrumTimer.is_stopped(): return 
+		var offset_scalar = 10 
 		pos += dir*offset_scalar 
 		strum.emit(pos, dir) 
 		$StrumTimer.start() 

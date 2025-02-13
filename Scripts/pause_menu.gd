@@ -5,7 +5,7 @@ extends CanvasLayer
 @onready var resumeSprite = $PauseBackground/VBoxContainer/ResumeAnimatedSprite2D
 @onready var quitSprite = $PauseBackground/VBoxContainer/QuitAnimatedSprite2D
 var paused = false
-@onready var pause_menu = $PauseMenu 
+#@onready var pause_menu = $PauseMenu 
 
 
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _ready() -> void:
 	quitSprite.play()
 	#print(get_viewport().size/5, buttons.size/2)
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		$"../../../../".pauseMenu()
 
