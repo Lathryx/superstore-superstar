@@ -35,8 +35,10 @@ func _physics_process(delta: float) -> void:
 func _on_nav_timer_timeout() -> void:
 	navigation_agent.target_position = target.global_position 
 
-func _on_hurthox_received_damage(value): 
-	pass 
+func _on_hurt_box_received_damage(value): 
+	modulate = Color(1, 0.2, 0.2) 
+	await get_tree().create_timer(1.0).timeout 
+	modulate = Color.WHITE 
 
 func _on_health_depleted(): 
 	queue_free() 

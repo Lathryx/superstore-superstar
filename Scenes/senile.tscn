@@ -73,3 +73,4 @@ shape = SubResource("CapsuleShape2D_qhsd6")
 
 [connection signal="timeout" from="Navigation/NavTimer" to="." method="_on_nav_timer_timeout"]
 [connection signal="depleted" from="Health" to="." method="_on_health_depleted"]
+[connection signal="received_damage" from="HurtBox" to="." method="_on_hurt_box_received_damage"]
