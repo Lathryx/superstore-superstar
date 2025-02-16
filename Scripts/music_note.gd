@@ -19,6 +19,17 @@ func _physics_process(delta: float) -> void:
 
 func _on_health_depleted(): 
 	set_physics_process(false) 
-	$AnimatedSprite2D.animation = "vanish" 
-	await get_tree().create_timer(0.5).timeout 
+	#$HitBox.monitoring = false 
+	#$HitBox/CollisionShape2D.set_deferred("disabled", true) 
+	#print($HitBox/CollisionShape2D.disabled) 
+	#$AnimatedSprite2D.animation = "vanish" 
+	#await get_tree().create_timer(0.5).timeout 
 	queue_free() 
+	
+#func play_vanish(): 
+	#var poof = AnimatedSprite2D.new() 
+	#poof.sprite_frames = load("res://Resources/poof.tres") 
+	#add_child(poof) 
+	#poof.play() 
+	#await get_tree().create_timer(0.5).timeout 
+	#poof.queue_free() 

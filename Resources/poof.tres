@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://bsbi8y1fi0b0n"]
+
+[ext_resource type="Texture2D" uid="uid://chv26jxlqf0kk" path="res://Sprite Sheets/Smoke Plume.png" id="1_sn2pj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovusd"]
+atlas = ExtResource("1_sn2pj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmuqv"]
+atlas = ExtResource("1_sn2pj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw4ru"]
+atlas = ExtResource("1_sn2pj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jcln"]
+atlas = ExtResource("1_sn2pj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rw1yw"]
+atlas = ExtResource("1_sn2pj")
+region = Rect2(128, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovusd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmuqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vw4ru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jcln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rw1yw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

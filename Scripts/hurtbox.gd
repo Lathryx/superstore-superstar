@@ -7,9 +7,12 @@ signal received_damage(damange: int)
 
 func _ready(): 
 	connect("area_entered", _on_area_entered) 
-
+	
 func _on_area_entered(hitbox: HitBox) -> void: 
 	if hitbox != null: 
 		health.health -= hitbox.damage 
 		received_damage.emit(hitbox.damage) 
-		print("HURT") 
+		#hitbox.monitoring = false 
+		#hitbox.get_node("CollisionShape2D").set_deferred("disabled", true) 
+		#print(hitbox.get_node("CollisionShape2D").disabled) 
+		#print("HURT") 
