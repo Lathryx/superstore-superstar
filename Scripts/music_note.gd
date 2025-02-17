@@ -22,10 +22,11 @@ func _on_health_depleted():
 	#$HitBox.monitoring = false 
 	#$HitBox/CollisionShape2D.set_deferred("disabled", true) 
 	#print($HitBox/CollisionShape2D.disabled) 
-	#$AnimatedSprite2D.animation = "vanish" 
-	#await get_tree().create_timer(0.5).timeout 
+	$AnimatedSprite2D.animation = "vanish" 
+	await get_tree().create_timer(0.5).timeout 
 	queue_free() 
 	
+#func _on_hit_box_area_entered(): 
 #func play_vanish(): 
 	#var poof = AnimatedSprite2D.new() 
 	#poof.sprite_frames = load("res://Resources/poof.tres") 
