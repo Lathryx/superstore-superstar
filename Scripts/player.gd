@@ -7,7 +7,7 @@ const accel = 3000
 const friction = 1500 
 
 func _ready(): 
-	$AnimatedSprite2D.play() 
+	$AnimatedSprite2D.play()
 	
 func _physics_process(delta: float) -> void: 
 	var direction = Vector2.ZERO 

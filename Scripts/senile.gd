@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 var speed: int 
 var acceleration = 7 
+signal enemy_died
 
 @onready var navigation_agent: NavigationAgent2D = $Navigation/NavigationAgent2D 
 # Called when the node enters the scene tree for the first time.
@@ -41,4 +42,5 @@ func _on_hurt_box_received_damage(value):
 	modulate = Color.WHITE 
 
 func _on_health_depleted(): 
-	queue_free() 
+	queue_free()
+	emit_signal("enemy_died")
