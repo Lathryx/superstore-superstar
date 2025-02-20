@@ -43,4 +43,4 @@ func _on_hurt_box_received_damage(value):
 
 func _on_health_depleted(): 
 	queue_free()
-	emit_signal("enemy_died")
+	enemy_died.emit() 

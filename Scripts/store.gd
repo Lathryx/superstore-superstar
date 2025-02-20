@@ -45,5 +45,6 @@ func _on_senile_timer_timeout():
 	
 	senile.position = senile_spawn_location.position 
 	
-	add_child(senile) 
+	add_child(senile)
+	
 	#print("added senile") 
